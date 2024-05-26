@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greek</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+        .half {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+        }
+        .top {
+            background-color: lightblue;
+        }
+        .bottom {
+            background-color: lightyellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="half top" id="key">ключ</div>
+    <div class="half bottom" id="value">κλειδί</div>
+
+    <script>
+        const pairs = [
+            {key: "дом", value: "σπίτι"},
+            {key: "книга", value: "βιβλίο"},
+            {key: "мир", value: "κόσμος"},
+            {key: "любовь", value: "αγάπη"},
+            {key: "солнце", value: "ήλιος"},
+            {key: "луна", value: "φεγγάρι"},
+            {key: "звезда", value: "αστέρι"},
+            {key: "вода", value: "νερό"},
+            {key: "огонь", value: "φωτιά"},
+            {key: "земля", value: "γη"}
+        ];
+
+        let index = 0;
+
+        function displayPair() {
+            document.getElementById('key').innerText = pairs[index].key;
+            document.getElementById('value').innerText = pairs[index].value;
+            index = (index + 1) % pairs.length;
+        }
+
+        // Change the pair every 3 seconds
+        setInterval(displayPair, 3000);
+
+        // Display the first pair initially
+        displayPair();
+    </script>
+</body>
+</html>
