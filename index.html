@@ -46,12 +46,15 @@
             {key: "земля", value: "γη"}
         ];
 
-        let index = 0;
+        function getRandomPair() {
+            const randomIndex = Math.floor(Math.random() * pairs.length);
+            return pairs[randomIndex];
+        }
 
         function displayPair() {
-            document.getElementById('key').innerText = pairs[index].key;
-            document.getElementById('value').innerText = pairs[index].value;
-            index = (index + 1) % pairs.length;
+            const pair = getRandomPair();
+            document.getElementById('key').innerText = pair.key;
+            document.getElementById('value').innerText = pair.value;
         }
 
         // Change the pair every 3 seconds
