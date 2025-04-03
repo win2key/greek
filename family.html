@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+        .half {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+        }
+        .top {
+            background-color: lightblue;
+        }
+        .bottom {
+            background-color: lightyellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="half top" id="key">ключ</div>
+    <div class="half bottom" id="value">κλειδί</div>
+
+    <script>
+        const pairs = [
+            {key: "семья", value: "οικογένεια"},
+            {key: "отец", value: "πατέρας"},
+            {key: "папа", value: "μπαμπάς"},
+            {key: "мать", value: "μητέρα"},
+            {key: "мама", value: "μαμά"},
+            {key: "брат", value: "αδελφός"},
+            {key: "сестра", value: "αδελφή"},
+            {key: "сын", value: "γιος"},
+            {key: "дочь", value: "κόρη"},
+            {key: "дедушка", value: "παππούς"},
+            {key: "бабушка", value: "γιαγιά"},
+            {key: "дедушка и бабушка", value: "παππούδες"},
+            {key: "внук", value: "εγγονός"},
+            {key: "внучка", value: "εγγονή"},
+            {key: "дядя", value: "θείος"},
+            {key: "тётя", value: "θεία"},
+            {key: "двоюродный брат", value: "ξάδελφος"},
+            {key: "двоюродная сестра", value: "ξαδέλφη"},
+            {key: "племянник", value: "ανιψιός"},
+            {key: "племянница", value: "ανιψιά"},
+            {key: "свёкор / тесть", value: "πεθερός"},
+            {key: "свекровь / тёща", value: "πεθερά"},
+            {key: "шурин / деверь", value: "κουνιάδος"},
+            {key: "золовка / свояченица", value: "κουνιάδα"},
+            {key: "зять", value: "γαμπρός"},
+            {key: "невестка", value: "νύφη"},
+            {key: "муж", value: "άντρας"},
+            {key: "жена", value: "γυναίκα"},
+            {key: "супруг(а)", value: "σύζυγος"},
+            {key: "партнёр", value: "σύντροφος"},
+            {key: "ребёнок", value: "παιδί"},
+            {key: "дети", value: "παιδιά"},
+            {key: "младенец", value: "μωρό"},
+            {key: "родители", value: "γονείς"},
+            {key: "братья и сестры", value: "αδέλφια"},
+            {key: "родственник", value: "συγγενής"},
+            {key: "родственники", value: "συγγενείς"}
+        ];
+
+        function getRandomPair() {
+            const randomIndex = Math.floor(Math.random() * pairs.length);
+            return pairs[randomIndex];
+        }
+
+        function displayPair() {
+            const pair = getRandomPair();
+            document.getElementById('key').innerText = pair.key;
+            document.getElementById('value').innerText = pair.value;
+        }
+
+        // Change the pair every 3 seconds
+        setInterval(displayPair, 3000);
+
+        // Display the first pair initially
+        displayPair();
+    </script>
+</body>
+</html>
