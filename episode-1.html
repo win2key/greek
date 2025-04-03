@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Greek Vocabulary</title>
+        <style>
+            body,
+            html {
+                height: 100%;
+                margin: 0;
+                font-family: Arial, sans-serif;
+                display: flex;
+                flex-direction: column;
+            }
+            .half {
+                width: 100%;
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 2em;
+            }
+            .top {
+                background-color: lightblue;
+            }
+            .bottom {
+                background-color: lightyellow;
+            }
+            .pronunciation {
+              background-color: #f4cccc; /* light red/pink */
+        </style>
+    </head>
+    <body>
+        <div class="half pronunciation" id="pronunciation">pronunciation</div>
+        <div class="half top" id="key">ключ</div>
+        <div class="half bottom" id="value">κλειδί</div>
+
+        <script>
+            const pairs = [
+                { key: "άγνωστες", value: "незнакомые", pronunciation: "ágnostes" },
+                { key: "άλλα", value: "другие", pronunciation: "álla" },
+                { key: "άλλο", value: "другое", pronunciation: "állo" },
+                { key: "άρτεμις", value: "Артемида", pronunciation: "Ártemis" },
+                { key: "έλληνες", value: "греки", pronunciation: "Éllines" },
+                { key: "έχει", value: "имеет", pronunciation: "Échi" },
+                { key: "έχουμε", value: "мы имеем", pronunciation: "Échoume" },
+                { key: "έχουν", value: "они имеют", pronunciation: "Échoun" },
+                { key: "ή", value: "или", pronunciation: "í" },
+                { key: "ήρθατε", value: "вы пришли", pronunciation: "írthate" },
+                { key: "ήταν", value: "было", pronunciation: "ítan" },
+                { key: "αγοράσετε", value: "покупаете", pronunciation: "agorásete" },
+                { key: "ακούτε", value: "слушаете", pronunciation: "akoúte" },
+                { key: "ακριβά", value: "дорого", pronunciation: "akrivá" },
+                { key: "ακόμα", value: "ещё", pronunciation: "akóma" },
+                { key: "αλκοολούχα", value: "алкогольные", pronunciation: "alkooloúcha" },
+                { key: "αλκοόλ", value: "алкоголь", pronunciation: "alkoól" },
+                { key: "αλλά", value: "но", pronunciation: "allá" },
+                { key: "αμύγδαλο", value: "миндаль", pronunciation: "amýgdalo" },
+                { key: "αν", value: "если", pronunciation: "an" },
+                { key: "αναψυκτικά", value: "газированные напитки", pronunciation: "anapsyktiká" },
+                { key: "ανθρακικό", value: "углекислый газ", pronunciation: "anthrakikó" },
+                { key: "απλά", value: "просто", pronunciation: "aplá" },
+                { key: "απλό", value: "простой", pronunciation: "apló" },
+                { key: "από", value: "из", pronunciation: "apó" },
+                { key: "αρέσει", value: "нравится", pronunciation: "arési" },
+                { key: "αρέσουν", value: "нравятся", pronunciation: "arésoun" },
+                { key: "αργούς", value: "медленные", pronunciation: "argoús" },
+                { key: "ας", value: "давайте", pronunciation: "as" },
+                { key: "αυτά", value: "эти (ср.р)", pronunciation: "aftá" },
+                { key: "αυτές", value: "эти (ж.р)", pronunciation: "aftés" },
+                { key: "αυτή", value: "эта", pronunciation: "aftí" },
+                { key: "αυτού", value: "этого", pronunciation: "aftoú" },
+                { key: "αυτό", value: "это", pronunciation: "aftó" },
+                { key: "βάζετε", value: "кладёте", pronunciation: "vázete" },
+                { key: "βάζω", value: "кладу", pronunciation: "vázo" },
+                { key: "βαθμίδα", value: "уровень", pronunciation: "vathmída" },
+                { key: "βοηθήσει", value: "помочь", pronunciation: "voithísi" },
+                { key: "βρείτε", value: "найдите", pronunciation: "vríte" },
+                { key: "βρύσης", value: "водопровод", pronunciation: "vrýsis" },
+                { key: "βρώμη", value: "овёс", pronunciation: "vrómi" },
+                { key: "γάλα", value: "молоко", pronunciation: "gála" },
+                { key: "γάλατα", value: "молочные", pronunciation: "gálata" },
+                { key: "γίνετε", value: "становитесь", pronunciation: "gínete" },
+                { key: "γεια", value: "привет", pronunciation: "ya" },
+                { key: "γι", value: "γι", pronunciation: "yi" },
+                { key: "για", value: "для", pronunciation: "ya" },
+                { key: "γιατί", value: "почему", pronunciation: "yatí" },
+                { key: "δείτε", value: "посмотрите", pronunciation: "díite" },
+                { key: "δεν", value: "не", pronunciation: "den" },
+                { key: "δηλαδή", value: "то есть", pronunciation: "diladí" },
+                { key: "δημήτρης", value: "димитрис", pronunciation: "Dimítris" },
+                { key: "διαβάζετε", value: "читаете", pronunciation: "thiavázete" },
+                { key: "διαφορετικά", value: "по-другому", pronunciation: "thiaforetiká" },
+                { key: "δωματίου", value: "комнаты", pronunciation: "thomatíou" },
+                { key: "είδη", value: "виды", pronunciation: "íthi" },
+                { key: "είμαι", value: "я есть", pronunciation: "íme" },
+                { key: "είναι", value: "он/она/оно есть", pronunciation: "íne" },
+                { key: "είστε", value: "вы есть", pronunciation: "íste" },
+                { key: "εβδομάδα", value: "неделя", pronunciation: "evdomáda" },
+                { key: "ελλάδα", value: "греция", pronunciation: "Elláda" },
+                { key: "ελληνικά", value: "греческий", pronunciation: "elliniká" },
+                { key: "εμάς", value: "нас", pronunciation: "emás" },
+                { key: "εμένα", value: "меня", pronunciation: "eména" },
+                { key: "ενώ", value: "в то время как", pronunciation: "enó" },
+                { key: "εξάσκηση", value: "практика", pronunciation: "exáskisi" },
+                { key: "επεισοδίου", value: "эпизода", pronunciation: "episodíou" },
+                { key: "επεισοδιάκι", value: "небольшой эпизод", pronunciation: "episodiáki" },
+                { key: "επεισόδιο", value: "эпизод", pronunciation: "episódio" },
+                { key: "επόμενο", value: "следующее", pronunciation: "epómeno" },
+                { key: "εσείς", value: "вы", pronunciation: "esís" },
+                { key: "ζάχαρη", value: "сахар", pronunciation: "záchari" },
+                { key: "ζεστή", value: "тёплая", pronunciation: "zestí" },
+                { key: "ζώα", value: "животные", pronunciation: "zóa" },
+                { key: "η", value: "определённый артикль (ж.р.)", pronunciation: "i" },
+                { key: "θέμα", value: "тема", pronunciation: "théma" },
+                { key: "θα", value: "будет", pronunciation: "tha" },
+                { key: "θεού", value: "бога", pronunciation: "theoú" },
+                { key: "θερμίδες", value: "калории", pronunciation: "thermídes" },
+                { key: "θερμοκρασία", value: "температура", pronunciation: "thermokrasía" },
+                { key: "θρεπτικά", value: "питательные", pronunciation: "threptiká" },
+                { key: "ιδανική", value: "идеальная", pronunciation: "idanikí" },
+                { key: "ιδιαίτερα", value: "особенно", pronunciation: "idiótera" },
+                { key: "ιδιαίτερο", value: "особенное", pronunciation: "idiótero" },
+                { key: "κάθε", value: "каждый", pronunciation: "káthe" },
+                { key: "κάνουμε", value: "делаем", pronunciation: "kánoume" },
+                { key: "κάποιους", value: "некоторых", pronunciation: "kápoious" },
+                { key: "κάτι", value: "что-то", pronunciation: "káti" },
+                { key: "καθένας", value: "каждый (человек)", pronunciation: "kathénas" },
+                { key: "και", value: "и", pronunciation: "kai" },
+                { key: "κακό", value: "плохо", pronunciation: "kakó" },
+                { key: "καλοκαίρι", value: "лето", pronunciation: "kalokéri" },
+                { key: "καλώς", value: "добро пожаловать", pronunciation: "kalós" },
+                { key: "καντίνα", value: "буфет", pronunciation: "kantína" },
+                { key: "καταλαβαίνετε", value: "понимаете", pronunciation: "katalavénete" },
+                { key: "καφέ", value: "кофе", pronunciation: "kafé" },
+                { key: "κοκακόλα", value: "кока-кола", pronunciation: "kokakóla" },
+                { key: "κρασί", value: "вино", pronunciation: "krasí" },
+                { key: "κρύα", value: "холодная", pronunciation: "krýa" },
+                { key: "κρύο", value: "холод", pronunciation: "krýo" },
+                { key: "κτλ", value: "и т.д.", pronunciation: "kai ta loipá" },
+                { key: "λέμε", value: "говорим", pronunciation: "léme" },
+                { key: "λέξεις", value: "слова", pronunciation: "léxis" },
+                { key: "λίγη", value: "немного (ж.р.)", pronunciation: "lígi" },
+                { key: "λίγο", value: "немного", pronunciation: "lígo" },
+                { key: "λείψει", value: "отсутствие", pronunciation: "lípsei" },
+                { key: "λεμονάδες", value: "лимонады", pronunciation: "lemonádes" },
+                { key: "λοιπόν", value: "итак", pronunciation: "lopón" },
+                { key: "μάρκετ", value: "маркет", pronunciation: "márket" },
+                { key: "μέλη", value: "члены", pronunciation: "méli" },
+                { key: "μέρα", value: "день", pronunciation: "méra" },
+                { key: "μήπως", value: "может быть", pronunciation: "mípos" },
+                { key: "μαζί", value: "вместе", pronunciation: "mazí" },
+                { key: "μαθαίνουμε", value: "учим", pronunciation: "mathénoume" },
+                { key: "μας", value: "нас / наш", pronunciation: "mas" },
+                { key: "με", value: "с", pronunciation: "me" },
+                { key: "μεγάλους", value: "больших", pronunciation: "megálous" },
+                { key: "μινιμάρκετ", value: "мини-маркет", pronunciation: "minimárket" },
+                { key: "μονολόγους", value: "монологи", pronunciation: "monológous" },
+                { key: "μου", value: "мой", pronunciation: "mou" },
+                { key: "μπορεί", value: "может", pronunciation: "borí" },
+                { key: "μπορείτε", value: "можете", pronunciation: "boríte" },
+                { key: "μπύρα", value: "пиво", pronunciation: "býra" },
+                { key: "να", value: "чтобы", pronunciation: "na" },
+                { key: "νεράκι", value: "водичка", pronunciation: "neráki" },
+                { key: "νερό", value: "вода", pronunciation: "neró" },
+                { key: "νομίζω", value: "думаю", pronunciation: "nomízo" },
+                { key: "νόστιμα", value: "вкусные", pronunciation: "nóstima" },
+                { key: "ξέρετε", value: "знаете", pronunciation: "xérete" },
+                { key: "ο", value: "определенный артикль (м.р. ед.ч.)", pronunciation: "o" },
+                { key: "οι", value: "определенный артикль (мн.ч.)", pronunciation: "i" },
+                { key: "οποιοδήποτε", value: "любой", pronunciation: "opio̱dípote" },
+                { key: "ούτε", value: "ни", pronunciation: "oúte" },
+                { key: "πάρα", value: "очень", pronunciation: "pára" },
+                { key: "πέρα", value: "за пределами", pronunciation: "péra" },
+                { key: "πίνετε", value: "вы пьёте", pronunciation: "pínete" },
+                { key: "πίνουμε", value: "мы пьём", pronunciation: "pínoume" },
+                { key: "πίνουν", value: "они пьют", pronunciation: "pínoun" },
+                { key: "πίνω", value: "я пью", pronunciation: "píno" },
+                { key: "παγωμένο", value: "холодный (о напитке)", pronunciation: "pagoméno" },
+                { key: "παιδιά", value: "дети", pronunciation: "paidiá" },
+                { key: "παρακάνετε", value: "перебарщиваете", pronunciation: "parakánete" },
+                { key: "περίπτερο", value: "киоск", pronunciation: "períptero" },
+                { key: "περιγραφή", value: "описание", pronunciation: "perigrafí" },
+                { key: "περισσότερα", value: "больше (ср. род, мн. ч.)", pronunciation: "perissótera" },
+                { key: "περισσότερο", value: "больше", pronunciation: "perissótero" },
+                { key: "περισσότερους", value: "больше (муж. род, вин. п.)", pronunciation: "perissóterous" },
+                { key: "πιο", value: "более", pronunciation: "pio" },
+                { key: "ποιο", value: "какой", pronunciation: "poio" },
+                { key: "πολλά", value: "много (ср. род)", pronunciation: "pollá" },
+                { key: "πολλές", value: "много (жен. род)", pronunciation: "pollés" },
+                { key: "πολύ", value: "очень / много", pronunciation: "polý" },
+                { key: "πορτοκάλι", value: "апельсин", pronunciation: "portokáli" },
+                { key: "πορτοκαλάδες", value: "апельсиновые напитки", pronunciation: "portokaládes" },
+                { key: "ποτά", value: "напитки", pronunciation: "potá" },
+                { key: "ποτό", value: "напиток / алкоголь", pronunciation: "potó" },
+                { key: "που", value: "который / что", pronunciation: "pou" },
+                { key: "πρέπει", value: "должен / нужно", pronunciation: "prépei" },
+                { key: "πρώτο", value: "первый", pronunciation: "próto" },
+                { key: "πόσο", value: "сколько / насколько", pronunciation: "póso" },
+                { key: "πώς", value: "как", pronunciation: "pós" },
+                { key: "σήμερα", value: "сегодня", pronunciation: "símera" },
+                { key: "σαν", value: "как / словно", pronunciation: "san" },
+                { key: "σας", value: "ваш / вас", pronunciation: "sas" },
+                { key: "σε", value: "в / на / к", pronunciation: "se" },
+                { key: "σημαίνουν", value: "означают", pronunciation: "siménoun" },
+                { key: "σούπερ", value: "супер", pronunciation: "soúper" },
+                { key: "σπράιτ", value: "спрайт", pronunciation: "spráit" },
+                { key: "στα", value: "в (мн.ч.)", pronunciation: "sta" },
+                { key: "στη", value: "в (ж.р.)", pronunciation: "sti" },
+                { key: "στην", value: "в (ж.р., слияние)", pronunciation: "stin" },
+                { key: "στο", value: "в (ср.р.)", pronunciation: "sto" },
+                { key: "στους", value: "в (м.р., мн.ч.)", pronunciation: "stous" },
+                { key: "συνήθως", value: "обычно", pronunciation: "syníthos" },
+                { key: "συνηθίσει", value: "привыкнуть", pronunciation: "synithísi" },
+                { key: "συσκευασμένοι", value: "упакованные", pronunciation: "syskevasméni" },
+                { key: "συχνά", value: "часто", pronunciation: "sychná" },
+                { key: "σωστή", value: "правильная", pronunciation: "sostí" },
+                { key: "σύντομα", value: "вскоре", pronunciation: "sýntoma" },
+                { key: "τέλος", value: "конец", pronunciation: "télos" },
+                { key: "τέτοια", value: "такие", pronunciation: "tétia" },
+                { key: "τα", value: "их / те (ср.р. мн.ч.)", pronunciation: "ta" },
+                { key: "την", value: "её / её (вин. падеж, ж.р.)", pronunciation: "tin" },
+                { key: "της", value: "её / её (род. падеж, ж.р.)", pronunciation: "tis" },
+                { key: "τι", value: "что", pronunciation: "ti" },
+                { key: "το", value: "это / его (ср.р.)", pronunciation: "to" },
+                { key: "τον", value: "его (вин. падеж, м.р.)", pronunciation: "ton" },
+                { key: "του", value: "его (род. падеж, м.р./ср.р.)", pronunciation: "tou" },
+                { key: "τους", value: "их (м.р./ср.р. мн.ч.)", pronunciation: "tous" },
+                { key: "τσάι", value: "чай", pronunciation: "tsái" },
+                { key: "τόσο", value: "столько", pronunciation: "tóso" },
+                { key: "υγεία", value: "здоровье", pronunciation: "ygeía" },
+                { key: "υλικό", value: "материал", pronunciation: "ylikó" },
+                { key: "υπάρχουν", value: "существуют", pronunciation: "ypárchoun" },
+                { key: "υπότιτλοι", value: "субтитры", pronunciation: "ypótitloi" },
+                { key: "φρούτα", value: "фрукты", pronunciation: "froúta" },
+                { key: "φρούτων", value: "фруктов", pronunciation: "froúton" },
+                { key: "φυσαλίδες", value: "пузыри", pronunciation: "fysalídes" },
+                { key: "φυσικά", value: "естественно / конечно", pronunciation: "fysiká" },
+                { key: "φυσικοί", value: "естественные (м.р.)", pronunciation: "fysikoí" },
+                { key: "φυτικά", value: "растительные", pronunciation: "fytiká" },
+                { key: "χαρά", value: "радость", pronunciation: "chará" },
+                { key: "χλιαρή", value: "тёплая", pronunciation: "chliarí" },
+                { key: "χυμοί", value: "соки", pronunciation: "chymoí" },
+                { key: "χωρίς", value: "без", pronunciation: "chorís" },
+                { key: "χώρες", value: "страны", pronunciation: "chóres" },
+                { key: "ψυγείο", value: "холодильник", pronunciation: "psygeío" },
+                { key: "ωραία", value: "красиво / хорошо", pronunciation: "oraía" },
+                { key: "όλο", value: "всё", pronunciation: "ólo" },
+                { key: "όμως", value: "однако", pronunciation: "ómos" },
+                { key: "όπου", value: "где", pronunciation: "ópou" },
+                { key: "όπως", value: "как", pronunciation: "ópos" },
+                { key: "ότι", value: "что (союз)", pronunciation: "óti" },
+                { key: "όχι", value: "нет", pronunciation: "óchi" },
+            ];
+
+            function getRandomPair() {
+                const randomIndex = Math.floor(Math.random() * pairs.length);
+                return pairs[randomIndex];
+            }
+
+            function displayPair() {
+                const pair = getRandomPair();
+                document.getElementById("key").innerText = pair.key;
+                document.getElementById("value").innerText = pair.value;
+                document.getElementById("pronunciation").innerText = pair.pronunciation;
+            }
+
+            let paused = false;
+
+            // Function that runs the update loop with pause support
+            function startDisplayLoop() {
+                setInterval(() => {
+                    if (!paused) {
+                        displayPair();
+                    }
+                }, 2000);
+            }
+
+            // Keydown/up event listeners to pause/resume when holding the space bar
+            document.addEventListener('keydown', (e) => {
+                if (e.code === 'Space') {
+                    paused = true;
+                }
+            });
+
+            document.addEventListener('keyup', (e) => {
+                if (e.code === 'Space') {
+                    paused = false;
+                }
+            });
+
+            displayPair(); // Show first pair immediately
+            startDisplayLoop(); // Start the loop
+        </script>
+    </body>
+</html>
