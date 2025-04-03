@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+        .half {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+        }
+        .top {
+            background-color: lightblue;
+        }
+        .bottom {
+            background-color: lightyellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="half top" id="key">ключ</div>
+    <div class="half bottom" id="value">κλειδί</div>
+
+    <script>
+        const pairs = [
+            {key: "буря", value: "δουν οι άνεμοι"},
+            {key: "ветрено", value: "άνεμος"},
+            {key: "видно луну", value: "έχει το φεγγάρι"},
+            {key: "гроза", value: "καταιγίδα"},
+            {key: "дождь", value: "βροχή"},
+            {key: "дует ветер", value: "φυσάει"},
+            {key: "жарко", value: "ζεστό"},
+            {key: "жарко", value: "κάνει ζέστη"},
+            {key: "заморозки", value: "πάγωμα"},
+            {key: "идет дождь", value: "βρέχει"},
+            {key: "ливень", value: "καταρρακτώδης βροχή"},
+            {key: "луна", value: "φεγγάρι"},
+            {key: "мороз", value: "παγετός"},
+            {key: "облачно", value: "έχει συννεφιά"},
+            {key: "облачно", value: "συννεφιά"},
+            {key: "прохладно", value: "δροσιά"},
+            {key: "прохладно", value: "κάνει της δροσιάς"},
+            {key: "радуга", value: "έχει ουράνιο τόξο"},
+            {key: "радуга", value: "ουράνιο τόξο"},
+            {key: "сверкает молния", value: "αστράφτει"},
+            {key: "снег", value: "έχει χιόνι"},
+            {key: "снег", value: "χιόνι"},
+            {key: "солнечно", value: "κάνει ήλιο"},
+            {key: "солнце", value: "ήλιος"},
+            {key: "тепло", value: "ζεστασιά"},
+            {key: "туман", value: "ομίχλη"},
+            {key: "туманно", value: "έχει της ομίχλης"},
+            {key: "холодно", value: "κάνει κρύο"},
+            {key: "холодно", value: "κρύο"},
+            {key: "хороший день", value: "κάνει καλή ημέρα"},
+            {key: "шторм", value: "θύελλα"},
+            {key: "ясно", value: "καθαρός ουρανός"},
+        ];
+
+        function getRandomPair() {
+            const randomIndex = Math.floor(Math.random() * pairs.length);
+            return pairs[randomIndex];
+        }
+
+        function displayPair() {
+            const pair = getRandomPair();
+            document.getElementById('key').innerText = pair.key;
+            document.getElementById('value').innerText = pair.value;
+        }
+
+        // Change the pair every 3 seconds
+        setInterval(displayPair, 3000);
+
+        // Display the first pair initially
+        displayPair();
+    </script>
+</body>
+</html>
