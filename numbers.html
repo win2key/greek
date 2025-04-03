@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numbers</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+        .half {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+        }
+        .top {
+            background-color: lightblue;
+        }
+        .bottom {
+            background-color: lightyellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="half top" id="key">ключ</div>
+    <div class="half bottom" id="value">κλειδί</div>
+
+    <script>
+        const pairs = [
+            {key: "0", value: "μηδέν"},
+            {key: "1", value: "ένα"},
+            {key: "2", value: "δύο"},
+            {key: "3", value: "τρία"},
+            {key: "4", value: "τέσσερα"},
+            {key: "5", value: "πέντε"},
+            {key: "6", value: "έξι"},
+            {key: "7", value: "επτά"},
+            {key: "8", value: "οκτώ"},
+            {key: "9", value: "εννέα"},
+            {key: "10", value: "δέκα"},
+            {key: "11", value: "έντεκα"},
+            {key: "12", value: "δώδεκα"},
+            {key: "13", value: "δεκατρία"},
+            {key: "14", value: "δεκατέσσερα"},
+            {key: "15", value: "δεκαπέντε"},
+            {key: "16", value: "δεκαέξι"},
+            {key: "17", value: "δεκαεπτά"},
+            {key: "18", value: "δεκαοκτώ"},
+            {key: "19", value: "δεκαεννέα"},
+            {key: "20", value: "είκοσι"},
+            {key: "30", value: "τριάντα"},
+            {key: "40", value: "σαράντα"},
+            {key: "50", value: "πενήντα"},
+            {key: "60", value: "εξήντα"},
+            {key: "70", value: "εβδομήντα"},
+            {key: "80", value: "ογδόντα"},
+            {key: "90", value: "ενενήντα"},
+            {key: "100", value: "εκατό"},
+            {key: "200", value: "διακόσια"},
+            {key: "300", value: "τριακόσια"},
+            {key: "400", value: "τετρακόσια"},
+            {key: "500", value: "πεντακόσια"},
+            {key: "600", value: "εξακόσια"},
+            {key: "700", value: "επτακόσια"},
+            {key: "800", value: "οκτακόσια"},
+            {key: "900", value: "εννιακόσια"},
+            {key: "1000", value: "χίλια"},
+            {key: "2000", value: "δύο χιλιάδες"},
+            {key: "3000", value: "τρεις χιλιάδες"},
+            {key: "4000", value: "τέσσερις χιλιάδες"},
+            {key: "5000", value: "πέντε χιλιάδες"},
+            {key: "6000", value: "έξι χιλιάδες"},
+            {key: "7000", value: "επτά χιλιάδες"},
+            {key: "8000", value: "οκτώ χιλιάδες"},
+            {key: "9000", value: "εννέα χιλιάδες"}
+        ];
+
+        function getRandomPair() {
+            const randomIndex = Math.floor(Math.random() * pairs.length);
+            return pairs[randomIndex];
+        }
+
+        function displayPair() {
+            const pair = getRandomPair();
+            document.getElementById('key').innerText = pair.key;
+            document.getElementById('value').innerText = pair.value;
+        }
+
+        // Change the pair every 3 seconds
+        setInterval(displayPair, 3000);
+
+        // Display the first pair initially
+        displayPair();
+    </script>
+</body>
+</html>
