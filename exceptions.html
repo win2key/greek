@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Greek Verb Trainer</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+    .section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.5em;
+    }
+    .present {
+      background-color: #add8e6; /* light blue */
+    }
+    .past {
+      background-color: #f0e68c; /* khaki */
+    }
+    .translation {
+      background-color: #f4cccc; /* light red/pink */
+    }
+  </style>
+</head>
+<body>
+  <div class="section present" id="present">πίνω</div>
+  <div class="section translation" id="translation">пью</div>
+  <div class="section past" id="past">ήπια</div>
+
+  <script>
+    const verbs = [
+      { present: "πίνω", past: "ήπια", translation: "пью" },
+      { present: "βλέπω", past: "είδα", translation: "вижу" },
+      { present: "κάνω", past: "έκανα", translation: "делаю" },
+      { present: "τρώω", past: "έφαγα", translation: "ем" },
+      { present: "πηγαίνω", past: "πήγα", translation: "иду" },
+      { present: "μαθαίνω", past: "έμαθα", translation: "учу, изучаю" },
+      { present: "φέρνω", past: "έφερα", translation: "несу" },
+      { present: "μένω", past: "έμεινα", translation: "живу" },
+      { present: "βρίσκω", past: "βρήκα", translation: "найду" },
+      { present: "λέω", past: "είπα", translation: "скажу" },
+      { present: "έχω", past: "είχα", translation: "имею" },
+      { present: "καταλαβαίνω", past: "κατάλαβα", translation: "понимаю" },
+      { present: "παντρεύομαι", past: "παντρεύτηκα", translation: "женюсь, замуж, выхожу" },
+      { present: "γεννιέμαι", past: "γεννήθηκα", translation: "родилась" },
+      { present: "φεύγω", past: "έφυγα", translation: "ухожу" },
+      { present: "δίνω", past: "έδωσα", translation: "даю" },
+      { present: "πέφτω", past: "έπεσα", translation: "падаю" },
+      { present: "στέλνω", past: "έστειλα", translation: "посылаю" },
+      { present: "πλένω", past: "έπλυνα", translation: "мою" },
+      { present: "βάζω", past: "έβαλα", translation: "ложу" },
+      { present: "βγάζω", past: "έβγαλα", translation: "вынимаю" },
+      { present: "παίρνω", past: "πήρα", translation: "беру" },
+      { present: "μπαίνω", past: "μπήκα", translation: "вхожу" },
+      { present: "βγαίνω", past: "βγήκα", translation: "выхожу" },
+      { present: "ανεβαίνω", past: "ανέβηκα", translation: "поднимаюсь" },
+      { present: "κατεβαίνω", past: "κατέβηκα", translation: "опускаюсь" },
+      { present: "περιμένω", past: "περίμενα", translation: "жду" },
+      { present: "πεθαίνω", past: "πέθανα", translation: "умираю" },
+      { present: "έρχομαι", past: "ήρθα", translation: "иду, приближаюсь" }
+    ];
+
+    function getRandomVerb() {
+      const randomIndex = Math.floor(Math.random() * verbs.length);
+      return verbs[randomIndex];
+    }
+
+    function displayVerb() {
+      const verb = getRandomVerb();
+      document.getElementById("present").innerText = verb.present;
+      document.getElementById("translation").innerText = verb.translation;
+      document.getElementById("past").innerText = verb.past;
+    }
+
+    setInterval(displayVerb, 2500); // change every 4 seconds
+    displayVerb();
+  </script>
+</body>
+</html>
