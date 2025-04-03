@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greek Vocabulary</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+        .half {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+        }
+        .top {
+            background-color: lightblue;
+        }
+        .bottom {
+            background-color: lightyellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="half top" id="key">ключ</div>
+    <div class="half bottom" id="value">κλειδί</div>
+
+    <script>
+        const pairs = [
+            {key: "понедельник", value: "Δευτέρα"},
+            {key: "вторник", value: "Τρίτη"},
+            {key: "среда", value: "Τετάρτη"},
+            {key: "четверг", value: "Πέμπτη"},
+            {key: "пятница", value: "Παρασκευή"},
+            {key: "суббота", value: "Σάββατο"},
+            {key: "воскресенье", value: "Κυριακή"}
+        ];
+
+        function getRandomPair() {
+            const randomIndex = Math.floor(Math.random() * pairs.length);
+            return pairs[randomIndex];
+        }
+
+        function displayPair() {
+            const pair = getRandomPair();
+            document.getElementById('key').innerText = pair.key;
+            document.getElementById('value').innerText = pair.value;
+        }
+
+        // Change the pair every 3 seconds
+        setInterval(displayPair, 3000);
+
+        // Display the first pair initially
+        displayPair();
+    </script>
+</body>
+</html>
