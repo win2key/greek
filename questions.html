@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numbers</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+        .half {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+        }
+        .top {
+            background-color: lightblue;
+        }
+        .bottom {
+            background-color: lightyellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="half top" id="key">ключ</div>
+    <div class="half bottom" id="value">κλειδί</div>
+
+    <script>
+        const pairs = [
+            {key: "где именно", value: "πού ακριβώς"},
+            {key: "где", value: "πού"},
+            {key: "зачем", value: "για ποιο λόγο"},
+            {key: "как долго", value: "για πόσο καιρό"},
+            {key: "как часто", value: "πόσο συχνά"},
+            {key: "как", value: "πώς"},
+            {key: "какая причина", value: "ποιος είναι ο λόγος"},
+            {key: "какая", value: "ποια"},
+            {key: "какие", value: "ποιοι/ποιες/ποια"},
+            {key: "какое", value: "ποιο"},
+            {key: "какой", value: "ποιος/ποια/ποιο (είδος)"},
+            {key: "когда", value: "πότε"},
+            {key: "который", value: "ποιος"},
+            {key: "кто виноват", value: "ποιος φταίει"},
+            {key: "кто это", value: "ποιος είναι αυτός/αυτή"},
+            {key: "кто", value: "ποιος"},
+            {key: "куда", value: "πού (προς τα πού)"},
+            {key: "откуда", value: "από πού"},
+            {key: "почему именно", value: "γιατί ακριβώς"},
+            {key: "почему", value: "γιατί"},
+            {key: "сколько", value: "πόσο"},
+            {key: "чей", value: "ποιου"},
+            {key: "чем", value: "με τι"},
+            {key: "что будет дальше", value: "τι θα γίνει μετά"},
+            {key: "что делать дальше", value: "τι να κάνω μετά"},
+            {key: "что делать", value: "τι να κάνω"},
+            {key: "что значит", value: "τι σημαίνει"},
+            {key: "что происходит", value: "τι συμβαίνει"},
+            {key: "что случилось", value: "τι έγινε"},
+            {key: "что это", value: "τι είναι αυτό"},
+            {key: "что", value: "τι"},
+            {key: "чья это идея", value: "ποιανού είναι αυτή η ιδέα"},
+        ];
+
+        function getRandomPair() {
+            const randomIndex = Math.floor(Math.random() * pairs.length);
+            return pairs[randomIndex];
+        }
+
+        function displayPair() {
+            const pair = getRandomPair();
+            document.getElementById('key').innerText = pair.key;
+            document.getElementById('value').innerText = pair.value;
+        }
+
+        // Change the pair every 3 seconds
+        setInterval(displayPair, 3000);
+
+        // Display the first pair initially
+        displayPair();
+    </script>
+</body>
+</html>
